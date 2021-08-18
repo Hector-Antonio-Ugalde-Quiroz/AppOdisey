@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reservar</title>
+	<link rel="stylesheet" type="text/css" href="css/splash.css">
+	<link rel="stylesheet" type="text/css" href="css/agregar.css">
+	<link rel="stylesheet"  href="Iconos/style.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="jquery/menu.js"></script>
+	<script src="jquery/acciones.js"></script>
+	<script src="conexion/cone.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+
+</head>
+<body style="background-color:#B5E36E;">
+		<script>
+	window.onload = function() {
+		var contenedor = document.getElementById('contenedor_carga');
+		contenedor.style.visibility = 'hidden';
+		contenedor.style.opacity = 0;
+	}
+</script>
+
+<div id="contenedor_carga">
+	<img id="logo" src="https://universidadesdemexico.mx/logos/original/logo-universidad-tecnologica-tula-tepeji.png">
+		<div id="titulo">
+			<h5 > Hector Antonio Ugalde Quiroz</h5>
+		</div>
+
+</div>
+
+
+
+<header>
+	<div class="menu_bar">
+		<a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="index.html"><span class="icon-home"></span>Inicio</a></li>
+			<li><a href="registro.html"><span class="icon-address-book"></span>Registro</a></li>
+			<li><a href="recomendaciones.html"><span class="icon-address-book"></span>Recomendaciones</a></li>
+			<li><a href="equipo.html"> <span class="icon-address-book">Equipo</a></li>
+			<li><a href="ejemplo.html"><span class=""></span>Mapa</a></li>
+
+
+		</ul>
+	</nav>
+
+</header>
+<h5>Se le asignara un guia al momento en que usted vaya al lugar que usted elijio</h5>
+
+<div class="oscurecer" id="oscurecer"></div>
+<div class="registrar" id=registrar>
+	
+	<div class="icon-cross" id="cerrar"></div>
+	<h4>Nueva Reserva</h4>	
+
+		<input id="id" type="hidden" value="" >
+		<input id="nombre" type="text" placeholder="Nombre" required>
+		<input id="acompanantes" type="number"  placeholder="Acompa&ntilde;ante" required>
+		<input id="lugar" type="text"  placeholder="Lugar" required>
+		<input id="fecha" type="date"  placeholder="Fecha" required>
+		<input id="hora" placeholder="Horario del parque: 9:00 - 17:00" required>
+				<input  id="enviar" type="button" value="Guardar">
+		<input  id="actualizar" type="button" value="Actualizar">
+		<input  id="cancelar" type="button" value="Cancelar">
+		
+	
+</div>
+
+<br>
+		<br>
+		<div id="lista">
+			<table id="registros">
+			</table>
+		</div>
+
+
+<div class="fixed-action-btn" id="regis">
+  <a class="btn-floating btn-large blue">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+</div>
+
+
+
+</body>
+
+
+</html>

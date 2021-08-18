@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Herramientas de alpinismo</title>
+</head>
+<body>
+    <script>
+
+
+                window.onload = function () {
+            // Variables
+            const IMAGENES = [
+                'https://blackisard.com/17339-large_default/Barracuda__navaja_escalada__Trango.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBRs4Q-gweiKMCu-TqJI0CxuztQaWNjC1SunRdbG71i8rHni-hPCSGMOpGMNOyY4KSJWM&usqp=CAU',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzcW-r4I_ng5oofXhptn4OP-3io2U0qMz7iw&usqp=CAU',
+                'https://www.glazier.mx/web/image/product.product/10471/image_512?unique=6e501d9',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkas15S6qczdPdlq6PVin-24VGUL221LHHTQ&usqp=CAU',
+                'https://image.freepik.com/foto-gratis/herramientas-viaje-equipos-senderismo-vista-arriba_93675-64859.jpg',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUBRjTIiZfOgNtckqyGtOGnDyoM0FxZlE7uaMSeKilHmJOtWXpJB0t0-C7tqb-6KBBU0k&usqp=CAU',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2lzCzO2xqsv3_IdN2-X8qLz4NTvSOJqL_Hw&usqp=CAU'
+            ];
+            const TIEMPO_INTERVALO_MILESIMAS_SEG = 1000;
+            let posicionActual = 0;
+            let $botonRetroceder = document.querySelector('#retroceder');
+            let $botonAvanzar = document.querySelector('#avanzar');
+            let $imagen = document.querySelector('#imagen');
+            let $botonPlay = document.querySelector('#play');
+            let $botonStop = document.querySelector('#stop');
+            let intervalo;
+
+            // Funciones
+
+            /**
+             * Funcion que cambia la foto en la siguiente posicion
+             */
+            function pasarFoto() {
+                if(posicionActual >= IMAGENES.length - 1) {
+                    posicionActual = 0;
+                } else {
+                    posicionActual++;
+                }
+                renderizarImagen();
+            }
+
+            /**
+             * Funcion que cambia la foto en la anterior posicion
+             */
+            function retrocederFoto() {
+                if(posicionActual <= 0) {
+                    posicionActual = IMAGENES.length - 1;
+                } else {
+                    posicionActual--;
+                }
+                renderizarImagen();
+            }
+
+            /**
+             * Funcion que actualiza la imagen de imagen dependiendo de posicionActual
+             */
+            function renderizarImagen () {
+                $imagen.style.backgroundImage = `url(${IMAGENES[posicionActual]})`;
+            }
+
+            /**
+             * Activa el autoplay de la imagen
+             */
+            function playIntervalo() {
+                intervalo = setInterval(pasarFoto, TIEMPO_INTERVALO_MILESIMAS_SEG);
+                // Desactivamos los botones de control
+                $botonAvanzar.setAttribute('disabled', true);
+                $botonRetroceder.setAttribute('disabled', true);
+                $botonPlay.setAttribute('disabled', true);
+                $botonStop.removeAttribute('disabled');
+
+            }
+
+            /**
+             * Para el autoplay de la imagen
+             */
+            function stopIntervalo() {
+                clearInterval(intervalo);
+                // Activamos los botones de control
+                $botonAvanzar.removeAttribute('disabled');
+                $botonRetroceder.removeAttribute('disabled');
+                $botonPlay.removeAttribute('disabled');
+                $botonStop.setAttribute('disabled', true);
+            }
+
+            // Eventos
+            $botonAvanzar.addEventListener('click', pasarFoto);
+            $botonRetroceder.addEventListener('click', retrocederFoto);
+            $botonPlay.addEventListener('click', playIntervalo);
+            $botonStop.addEventListener('click', stopIntervalo);
+            // Iniciar
+            renderizarImagen();
+        } 
+
+    </script>
+    <style>
+
+                .carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+        }
+        #imagen {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+        }
+
+        #menu ul li {
+    background-color:#2e518b;
+}
+
+#menu ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+
+#menu ul a {
+  display:block;
+  color:#fff;
+  text-decoration:none;
+  font-weight:400;
+  font-size:15px;
+  padding:10px;
+  font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+#menu ul li {
+  position:relative;
+  float:left;
+  margin:0;
+  padding:0;
+}
+
+#menu ul li:hover {
+  background:#5b78a7;
+}
+
+#menu ul ul {
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  padding:0;
+}
+
+#menu ul ul li {
+  float:none;
+  width:150px
+}
+
+#menu ul ul a {
+  line-height:120%;
+  padding:10px 15px;
+}
+
+#menu ul li:hover > ul {
+  display:block;
+}
+
+ body {
+  background-color: #ffdd90;
+  background-image: url("https://www.wishbird.com.mx/blog/wp-content/uploads/2012/08/alpinismo-1.jpg");
+}
+    </style>
+<nav id="menu">
+<ul>
+  <li><a href="index.html">Principal</a></li>
+  <li><a href="registro.html">Registro</a></li>
+  <li><a href="equipo.html">Equipo</a></li>
+  <li><a href="ejemplo.html">Mapa</a></li>
+<li><a href="recomendaciones.html">Recomendaciones</a></li>
+</ul>
+</nav>
+
+<div style="border: ridge #0f0fef 1px; background-color: #FFFFFF;">
+     <br /><h1>Equipo recomendado para su visita</h1> <br /> <br />
+      <div class="carousel">
+        <button id="retroceder">Retroceder</button>
+        <div id="imagen"></div>
+        <button id="avanzar">Avanzar</button>
+    </div>
+    <div class="controles">
+        <button id="play">Play</button>
+        <button id="stop" disabled>Stop</button>
+    </div><br/> <br/> <h2>Cuando usted vaya a la zona que usted elijio se necesita que usted lleve los siguientes materiales</h2>
+    <li>Mochila de día (30 o 40 litros)</li>
+	<li>1 piolet  clásico</li>
+	<li>1 cuerda simple (50 metros mínimo)</li>
+	<li>1 arnés</li>
+	<li>1 tornillo para hielo</li>
+	<li>1 gancho para Abalakov</li>
+	<li>Casco</li>
+	<li>Aparato de aseguramiento</li>
+	<li>Crampones regulados con sistema antisnow</li>
+	<li>Botas de alpinismo calientes, impermeables y cramponables</li>
+	<li>Guetres o polainas para nieve</li>
+	<li>2 cintas grandes y 2 mosquetones a rosca</li>
+	<li>Kit para rescate en nieve</li>
+	<li>Material de orientación: mapa, altímetro, brújula, GPS</li>
+	<li>1 linterna frontal con pilas nuevas</li>
+	<li>1 manta de supervivencia</li>
+	<li>1 par de calcetines calientes + 1 par de recambio</li>
+	<li>1 pantalón caliente y cortaviento</li>
+	<li>Ropa interior de deporte </li>
+	<li>Jersey de forro polar</li>
+	<li>Chaqueta cortaviento con capucha (tipo Gore Tex)</li>
+	<li>Un cubrepantalón cortaviento tipo Gore Tex</li>
+	<li>Un plumón caliente</li>
+	<li>1 par de guantes ligeros + 1 par de guantes calientes</li>
+	<li>1 gorro o cinta polar</li>
+	<li>1 par de gafas categoría 4 + 1 par de recambio</li>
+	<li>Crema solar de alta protección</li>
+	<li>1 botiquín de primeros auxilios individual </li>
+	<li>Algunos tentenpiés de ascensión + algo "salado”</li>
+	<li>1 cantimplora</li>
+	<li>1 navaja</li>
+</body>
+</html>
